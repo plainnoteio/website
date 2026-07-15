@@ -54,7 +54,6 @@ code {
 .btn:hover { background: var(--border); }
 .btn-primary { background: var(--text); color: var(--bg); }
 .btn-primary:hover { background: #333; }
-.btn-small { padding: 6px 13px; font-size: 14px; }
 .btn-big { padding: 13px 26px; font-size: 17px; }
 
 /* Nav */
