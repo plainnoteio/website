@@ -70,6 +70,7 @@ nav {
 .nav-right { display: flex; align-items: center; gap: 22px; font-size: 15px; }
 .nav-right a:not(.btn) { color: var(--text-soft); }
 .nav-right a:not(.btn):hover { color: var(--text); }
+.gh { display: flex; align-items: center; }
 
 /* Hero */
 .hero {
