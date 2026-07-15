@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plainnote — Plain markdown notes, no clutter</title>
+  <meta name="description" content="Plainnote is a local-first markdown notes app for Mac. Your notes are plain .md files on your disk — no database, no account, no telemetry. Open source.">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Plainnote">
+  <meta property="og:description" content="Plain markdown notes, no clutter. Local-first notes for Mac.">
+  <meta property="og:image" content="https://plainnote.io/assets/hero-light.png">
+</head>
+<body>
+
+  <nav>
+    <a class="brand" href="/">
+      <img src="assets/logo-line-1024.png" alt="" width="28" height="28">
+      <span>Plainnote</span>
+    </a>
+    <div class="nav-right">
+      <a href="https://github.com/plainnoteio/app">GitHub</a>
+      <a class="btn btn-small" href="#download">Download</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Plain markdown notes,<br>no clutter.</h1>
+    <p class="lede">Plainnote is a minimal notes app for Mac - a clean space to write, nothing extra. Every note is a plain markdown file on your disk.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#download">Download for Mac</a>
+    </div>
+    <div class="shot shot-hero">
+      <img src="assets/hero-light.png" alt="Plainnote showing a markdown note with wikilinks, tags, and backlinks" width="1240" height="792">
+    </div>
+  </header>
+
+  <section class="trust">
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+        <h3>Your files, on your disk</h3>
+        <p>Notes live in a folder you choose. Move them, back them up, sync them however you like.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+        <h3>Plain .md, no database</h3>
+        <p>Every note is an ordinary markdown file. Readable in any editor, today and in twenty years.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/></svg>
+        <h3>No account, no telemetry</h3>
+        <p>Nothing to sign up for. Plainnote doesn't phone home, and it works entirely offline.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+        <h3>Open source</h3>
+        <p>AGPL-3.0 licensed, all of it on GitHub. You can read every line of the app that holds your notes.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="download" id="download">
+    <h2>Get Plainnote</h2>
+    <p class="download-sub">For macOS on Apple silicon. Free.</p>
+    <a class="btn btn-primary btn-big" id="download-btn" href="https://github.com/plainnoteio/app/releases/latest">Download for Mac</a>
+    <p class="download-version" id="download-version"></p>
+    <p class="gatekeeper">Plainnote isn't signed with an Apple developer certificate yet, so the first launch is <strong>right-click&nbsp;→&nbsp;Open</strong>. After that it opens normally.</p>
+  </section>
+
+  <footer>
+    <img src="assets/logo-line-1024.png" alt="" width="22" height="22">
+    <span>Plainnote</span>
+    <span class="dot">·</span>
+    <a href="https://github.com/plainnoteio/app">GitHub</a>
+    <span class="dot">·</span>
+    <a href="https://github.com/plainnoteio/app/blob/main/LICENSE">AGPL-3.0</a>
+    <span class="dot">·</span>
+    <span>© 2026</span>
+  </footer>
+
+  <script>
+    // Fill in the latest version + direct DMG link from GitHub releases.
+    fetch('https://api.github.com/repos/plainnoteio/app/releases/latest')
+      .then(r => r.ok ? r.json() : null)
+      .then(rel => {
+        if (!rel) return;
+        const version = (rel.tag_name || '').replace(/^v/, '');
+        const dmg = (rel.assets || []).find(a => a.name.endsWith('.dmg'));
+        if (dmg) document.getElementById('download-btn').href = dmg.browser_download_url;
+        if (version) {
+          document.getElementById('download-version').textContent = 'Version ' + version;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
