@@ -140,13 +140,6 @@ nav {
 .download h2 { font-size: 34px; letter-spacing: -0.015em; }
 .download-sub { color: var(--text-soft); margin: 10px 0 28px; }
 .download-version { color: var(--muted); font-size: 14px; margin-top: 14px; }
-.gatekeeper {
-  max-width: 440px;
-  margin: 26px auto 0;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.55;
-}
 
 /* Footer */
 footer {
